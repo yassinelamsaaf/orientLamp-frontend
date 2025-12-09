@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+/* Enable class-based dark mode for Tailwind v4 */
+@custom-variant dark (&:where(.dark *));
+
+@theme {
+  --color-orientlamp-gold: #BB8A13;
+}
+
+@layer components {
+  .orientlamp-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .orientlamp-card {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-md p-6;
+  }
+  
+  .orientlamp-btn-primary {
+    @apply font-medium py-2 px-4 rounded-md transition-colors;
+    background-color: var(--orientlamp-gold);
+    color: var(--orientlamp-white);
+  }
+  
+  .orientlamp-btn-primary:hover {
+    @apply opacity-90;
+  }
+  
+  .orientlamp-btn-secondary {
+    @apply bg-transparent font-medium py-2 px-4 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors;
+    color: var(--orientlamp-gold);
+  }
+  
+  .orientlamp-input {
+    @apply w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 focus:outline-none focus:ring-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white;
+    focus:ring-color: var(--orientlamp-gold);
+    focus:border-color: var(--orientlamp-gold);
+  }
+  
+  .orientlamp-gold {
+    color: var(--orientlamp-gold);
+  }
+  
+  .bg-orientlamp-gold {
+    background-color: var(--orientlamp-gold);
+  }
+  
+  .text-orientlamp-gold {
+    color: var(--orientlamp-gold);
+  }
+  
+  .border-orientlamp-gold {
+    border-color: var(--orientlamp-gold);
+  }
+  
+  .text-orientlamp-black {
+    color: var(--orientlamp-black);
+  }
+}
