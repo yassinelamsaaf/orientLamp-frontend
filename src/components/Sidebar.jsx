@@ -34,7 +34,6 @@ const Sidebar = ({ showLabels = false }) => {
   const showText = showLabels || !isCompact;
 
   const links = [
-    { path: "/home", icon: Home, label: "Accueil" },
     { path: "/dashboard", icon: Calendar, label: "Tableau de bord" },
     { path: "/search", icon: Search, label: "Recherche" },
     { path: "/chat", icon: MessageSquare, label: "Chat AI" },

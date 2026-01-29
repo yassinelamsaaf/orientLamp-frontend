@@ -14,7 +14,7 @@ const Logo = ({ size = "md", showText = true }) => {
   };
 
   return (
-    <Link to="/dashboard" className="flex items-center gap-2">
+    <Link to="/" className="flex items-center gap-2">
       <img
         src="/images/orientLamp-logo.png"
         alt="OrientLamp"
