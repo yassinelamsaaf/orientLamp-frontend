@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useAuth } from '../hooks/useAuth';
 import { Check, Clock, Users, TrendingUp, Database, Award } from 'lucide-react';
 import NavBar from '../components/NavBar';
 import '../styles/Landing.css';
 
 const LandingPage = () => {
+  const { user } = useAuth();
   useEffect(() => {
     // Smooth scroll for anchor links
     const handleAnchorClick = (e) => {
@@ -74,7 +76,7 @@ const LandingPage = () => {
             et vous épanouirez.
           </p>
           <div className="hero-buttons">
-            <Link to="/signup" className="btn-primary">Commencer Maintenant</Link>
+            <Link to={user ? "/search" : "/signup"} className="btn-primary">Commencer Maintenant</Link>
             <a href="#services" className="btn-secondary">En Savoir Plus</a>
           </div>
         </div>

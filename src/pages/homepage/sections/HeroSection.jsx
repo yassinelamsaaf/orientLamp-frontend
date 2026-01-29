@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../../../hooks/useAuth";
 
 const HeroSection = () => {
+  const { user } = useAuth();
+
   return (
     <section className="hero" id="accueil">
       <div className="hero-overlay"></div>
@@ -21,7 +24,7 @@ const HeroSection = () => {
           dans lequel vous excellerez et vous épanouirez.
         </p>
         <div className="hero-buttons">
-          <Link to="/signup" className="btn-primary">
+          <Link to={user ? "/search" : "/signup"} className="btn-primary">
             Commencer Maintenant
           </Link>
           <a href="#services" className="btn-secondary">
