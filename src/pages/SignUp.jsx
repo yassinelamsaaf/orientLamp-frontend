@@ -32,18 +32,27 @@ const SignUp = () => {
       return;
     }
 
-    const result = await register({
-      firstName,
-      lastName,
-      email,
-      password,
-      educationLevel,
-    });
-
-    if (result.success) {
-      navigate("/");
-    } else {
-      setError(result.error);
+    try {
+      const result = await register(firstName, lastName, email, password, educationLevel);
+      if (result && result.success) {
+        // Don't auto-login — ask user to verify email first
+        navigate('/login');
+      } else {
+        const msg =
+          result?.error ||
+          result?.details?.message ||
+          result?.details?.error ||
+          result?.message ||
+          'Registration failed';
+        console.log('Registration failed message to display:', result, result?.details);
+        setError(msg);
+      }
+    } catch (err) {
+      // Prefer server-provided message when available
+      console.error('Registration error response:', err?.response || err);
+      const msg = err?.response?.data?.message || err?.message || 'Registration failed';
+      console.log('Error message to display:', msg);
+      setError(msg);
     }
   };
 
@@ -113,10 +122,14 @@ const SignUp = () => {
                 >
                   <option value="">Sélectionnez votre niveau</option>
                   <option value="bac">Bac</option>
-                  <option value="bac+2">Bac+2</option>
-                  <option value="bac+3">Bac+3 (Licence)</option>
-                  <option value="bac+5">Bac+5 (Master/Engineering)</option>
-                  <option value="plus que bac+5">Plus que Bac+5</option>
+                  <option value="bac1">Bac+1</option>
+                  <option value="bac2">Bac+2</option>
+                  <option value="bac2">Classes Préparatoires (Bac+2)</option>
+                  <option value="licence">Licence (Bac+3)</option>
+                  <option value="bac4">Bac+4</option>
+                  <option value="master">Master (Bac+5)</option>
+                  <option value="engineering">Ingénierie (Bac+5)</option>
+                  <option value="plusDeBac5">Plus que Bac+5</option>
                 </select>
               </div>
 
